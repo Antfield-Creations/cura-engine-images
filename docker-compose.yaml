@@ -17,29 +17,6 @@ services:
       # NOTE that -s settings are REQUIRED BEFORE OTHER parameters passed to CuraEngine
       - >
         /CuraEngine/build/Release/CuraEngine slice -p 
-        -s mesh_rotation_matrix="[[1,0,0], [0,1,0], [0,0,1]]"
-        -s machine_center_is_zero=False
-        -s machine_width=200
-        -s machine_depth=200
-        -s machine_height=250
-        -s material_shrinkage_percentage_z=100.0
-        -s material_shrinkage_percentage_xy=100.0
-        -s extruder_nr=1
-        -s adhesion_type=brim
-        -s machine_extruders_share_nozzle=False
-        -s prime_tower_enable=False
-        -s material_adhesion_tendency=10
-        -s layer_height_0=0.3
-        -s layer_height=0.2
-        -s layer_height=0.2
-        -s adaptive_layer_height_enabled=False
-        -s carve_multiple_volumes=True
-        -s alternate_carve_order=True
-        -s interlocking_enable=False
-        -s magic_spiralize=False
-        -s initial_layer_line_width_factor=100
-        -s remove_empty_first_layers=True
-        -s support_infill_extruder_nr=2
         -s roofing_layer_count=0
         -s cool_min_temperature=80
         -j /definitions/ultimaker_s3.def.json
