@@ -1,0 +1,4 @@
+.idea/
+definitions/*.json
+models/*.stl
+output/*.gcode
