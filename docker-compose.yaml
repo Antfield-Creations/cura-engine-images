@@ -8,17 +8,20 @@ services:
         CURA_ENGINE_VERSION: ${CURA_ENGINE_VERSION}
     image: cura-engine:${CURA_ENGINE_VERSION}
     volumes:
-      - "./output:/output"
+      - ./output:/output
       - ./definitions:/definitions:ro
-      - ./models/vervlochten-v9.stl:/models/model.stl:ro
+      - ./models:/models:ro
     command:
       - "bash"
       - "-c"
       # NOTE that -s settings are REQUIRED BEFORE OTHER parameters passed to CuraEngine
-      - >
-        /CuraEngine/build/Release/CuraEngine slice -p 
-        -s roofing_layer_count=0
-        -s cool_min_temperature=80
-        -j /definitions/ultimaker_s3.def.json
-        -o /output/sliced.gcode
-        -l /models/model.stl
+      - |
+        for model in /models/*.stl; do
+          /CuraEngine/build/Release/CuraEngine slice -p \
+          -s roofing_layer_count=0 \
+          -s roofing_monotonic=True \
+          -s cool_min_temperature=80 \
+          -j /definitions/ultimaker_s3.def.json \
+          -o /output/$$(basename $$model).gcode \
+          -l $$model; 
+        done
