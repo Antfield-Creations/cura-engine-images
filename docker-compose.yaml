@@ -18,10 +18,13 @@ services:
       - |
         for model in /models/*.stl; do
           /CuraEngine/build/Release/CuraEngine slice -p \
-          -s roofing_layer_count=0 \
-          -s roofing_monotonic=True \
+          -m6 \
+          -s roofing_layer_count=1 \
+          -s roofing_monotonic=true \
           -s cool_min_temperature=80 \
           -j /definitions/ultimaker_s3.def.json \
           -o /output/$$(basename $$model).gcode \
-          -l $$model; 
-        done
+          -l $$model \
+          -s support_enable=true \
+          -s support_type=buildplate \
+        ; done
