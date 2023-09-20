@@ -22,6 +22,10 @@ CURA_ENGINE_VERSION=5.4.0 docker-compose build
 
 ## Running
 
+```shell
+CURA_ENGINE_VERSION=5.4.0 docker-compose up
+```
+
 Slicing requires the binary executable and two files: 
 - A printer defintion json. These can be found at https://github.com/Ultimaker/Cura/tree/main/resources/definitions. 
   Pick one of the settings json files apt for your printer and adapt the settings to your printing preferences. A 
